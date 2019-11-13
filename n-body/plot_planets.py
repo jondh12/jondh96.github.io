@@ -33,7 +33,7 @@ fig = go.Figure(
             x=data[100*20*k:100*20*k+20][0::2],
             y=data[100*20*k:100*20*k+20][1::2],
             mode="markers",
-            marker=dict(color="red", size=10))])
+            marker=dict(color=["orange", "grey", "orange", "green", "red", "orange", "red", "purple", "blue", "purple"], size=[20, 10, 10, 10, 10, 16, 14, 16, 16, 10]))])
 
         for k in range(int(1e3))]
 )

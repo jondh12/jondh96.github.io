@@ -88,12 +88,12 @@ sliders = [dict(
 fig.update_layout(
     sliders=sliders,
     hovermode="closest",
-    title="Runge Kutta Method",
+    title=r'$\text{Runge Kutta Method for:    } y=e^t$',
     xaxis_title="Time (s)",
     yaxis_title="Position(m)",
     font=dict(
-        family="Courier New, monospace",
-        size=18,
+        # family="Courier New, monospace",
+        size=18
         )
 
 )
@@ -137,4 +137,4 @@ fig.update_layout(
 
 # )
 
-fig.write_html("runge.html")
+fig.write_html("runge.html", include_mathjax='cdn')

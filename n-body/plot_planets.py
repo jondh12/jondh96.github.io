@@ -23,11 +23,11 @@ fig = go.Figure(
                           buttons=[dict(label="Play",
                                         method="animate",
                                         args=[None]),
-                          		   dict(label="Pause",
+                                   dict(label="Pause",
                                         method="animate",
                                         args=[[None], {"frame": {"duration": 0, "redraw": False},
-                                  "mode": "immediate",
-                                  "transition": {"duration": 0}}])])]),
+                                                       "mode": "immediate",
+                                                               "transition": {"duration": 0}}])])]),
     frames=[go.Frame(
         data=[go.Scatter(
             x=data[100*20*k:100*20*k+20][0::2],
@@ -35,7 +35,7 @@ fig = go.Figure(
             mode="markers",
             marker=dict(color=["orange", "grey", "orange", "green", "red", "orange", "red", "purple", "blue", "purple"], size=[20, 10, 10, 10, 10, 16, 14, 16, 16, 10]))])
 
-        for k in range(int(1e3))]
+            for k in range(int(1e3))]
 )
 
 fig.write_html("planets.html")

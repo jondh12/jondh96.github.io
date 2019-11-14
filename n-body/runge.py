@@ -59,9 +59,9 @@ fig.add_trace(go.Scatter(visible=True, name="Truth", x=x, y=y))
 # fig.add_trace(go.Scatter(visible=False, name="I2", line=dict(color='purple'), x=[it0[0],it1[0]], y=[it0[1], it1[1]]))
 # fig.add_trace(go.Scatter(visible=False, name="I3", line=dict(color='green'), x=[it1[0], it2[0]], y=[it1[1], it2[1]]))
 
-fig.add_trace(go.Scatter(visible=False, name="I1", line=dict(color='red'), x=[it[0], it0[0]], y=[it[1], it0[1]]))
-fig.add_trace(go.Scatter(visible=False, name="I2", line=dict(color='purple'), x=[it0[0],it1[0]], y=[it0[1], it1[1]]))
-fig.add_trace(go.Scatter(visible=False, name="I3", line=dict(color='green'), x=[it1[0], it2[0]], y=[it1[1], it2[1]]))
+fig.add_trace(go.Scatter(visible=False, name="Step 1", line=dict(color='red'), x=[it[0], it0[0]], y=[it[1], it0[1]]))
+fig.add_trace(go.Scatter(visible=False, name="Step 2", line=dict(color='purple'), x=[it0[0],it1[0]], y=[it0[1], it1[1]]))
+fig.add_trace(go.Scatter(visible=False, name="Step 3", line=dict(color='green'), x=[it1[0], it2[0]], y=[it1[1], it2[1]]))
 
 # Make 10th trace visible
 # fig.data[10].visible = True

@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 
 data = np.fromfile('data.dat', dtype=np.float64)
 
-lim = 1e11
+lim = 1e12
 
 init_data = data[0:20]
 init_x = init_data[0::2]
@@ -17,8 +17,15 @@ fig = go.Figure(
                      mode="markers")],
     layout=go.Layout(
         xaxis=dict(range=[-lim, lim], autorange=False, zeroline=False),
+        xaxis_title="X Position (m)",
+        yaxis_title="Y Position (m)",
         yaxis=dict(range=[-lim, lim], autorange=False, zeroline=False),
-        title_text="Planetary Motion", hovermode="closest",
+        title_text="Planetary Motion",
+        hovermode="closest",
+        font=dict(
+        # family="Courier New, monospace",
+        size=18
+        ),
         updatemenus=[dict(type="buttons",
                           buttons=[dict(label="Play",
                                         method="animate",
@@ -38,4 +45,4 @@ fig = go.Figure(
             for k in range(int(1e3))]
 )
 
-fig.write_html("planets.html")
+fig.write_html("planets.html", include_mathjax='cdn')

@@ -2,13 +2,36 @@ import numpy as np
 import plotly.graph_objects as go
 
 n = 100
-
-x = np.linspace(-1, 3, n)
+h = 1.0
+x = np.linspace(-1, 5, n)
 y = np.exp(x)
-y0 = (0, 1)
-y1 = (1, 2)
-y2 = (2, 4)
-y3 = (3, 8) 
+
+
+def funct(t, y):
+    return y
+
+
+def runge(h, yn, t):
+    k1 = funct(t, yn)
+    k2 = funct(t + h/2.0, yn + k1/2.0)
+    k3 = funct(t+h/2.0, yn+k2/2.0)
+    k4 = funct(t+h, yn+k3)
+    print("K1 = {}\nK2 = {}\nK3 = {}\nK4 = {}\n".format(k1, k2, k3, k4))
+
+
+    yn1 = yn + h*(k1 + 2*k2 + 2*k3 + k4)/6
+    return yn1
+it = (0, 1)
+it0 = (1, runge(h, 1, 0))
+it1 = (2, runge(h, it0[1], 1))
+it2 = (3, runge(h, it1[1], 2))
+print(it0, it1, it2)
+
+# p_1 = (.5, 1+ h*1)
+# p_2 = (.5, 1+ h*1.5/2)
+# p_3 = (1, 1+ h*1.75/2)
+# p_4 = 0
+
 
 # Create figure
 fig = go.Figure()
@@ -24,9 +47,21 @@ fig = go.Figure()
 #             y=np.sin(step * np.arange(0, 10, 0.01))))
 
 fig.add_trace(go.Scatter(visible=True, name="Truth", x=x, y=y))
-fig.add_trace(go.Scatter(visible=False, name="Step 1", line=dict(color='red'), x=[y0[0],y1[0]], y=[y0[1], y1[1]]))
-fig.add_trace(go.Scatter(visible=False, name="Step 2", line=dict(color='purple'), x=[y1[0],y2[0]], y=[y1[1], y2[1]]))
-fig.add_trace(go.Scatter(visible=False, name="Step 3", line=dict(color='green'), x=[y2[0],y3[0]], y=[y2[1], y3[1]]))
+# fig.add_trace(go.Scatter(visible=False, name="K1", line=dict(color='red'), x=[k[0][0]], y=[k[0][1]]))
+# for index in range(3):
+#     prev_point = k[index -1]
+#     point = k[index]
+#     fig.add_trace(go.Scatter(visible=False, name="K{}".format(index), line=dict(color='red'), x=[prev_point[0], point[0]], y=[prev_point[1], point[1]]))
+
+
+
+# fig.add_trace(go.Scatter(visible=False, name="I1", line=dict(color='red'), x=[it[0], it0[0]], y=[it[1], it0[1]]))
+# fig.add_trace(go.Scatter(visible=False, name="I2", line=dict(color='purple'), x=[it0[0],it1[0]], y=[it0[1], it1[1]]))
+# fig.add_trace(go.Scatter(visible=False, name="I3", line=dict(color='green'), x=[it1[0], it2[0]], y=[it1[1], it2[1]]))
+
+fig.add_trace(go.Scatter(visible=False, name="I1", line=dict(color='red'), x=[it[0], it0[0]], y=[it[1], it0[1]]))
+fig.add_trace(go.Scatter(visible=False, name="I2", line=dict(color='purple'), x=[it0[0],it1[0]], y=[it0[1], it1[1]]))
+fig.add_trace(go.Scatter(visible=False, name="I3", line=dict(color='green'), x=[it1[0], it2[0]], y=[it1[1], it2[1]]))
 
 # Make 10th trace visible
 # fig.data[10].visible = True
@@ -53,7 +88,7 @@ sliders = [dict(
 fig.update_layout(
     sliders=sliders,
     hovermode="closest",
-    title="Euler Method",
+    title="Runge Kutta Method",
     xaxis_title="Time (s)",
     yaxis_title="Position(m)",
     font=dict(
@@ -102,4 +137,4 @@ fig.update_layout(
 
 # )
 
-fig.write_html("euler.html")
+fig.write_html("runge.html")

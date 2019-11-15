@@ -20,7 +20,7 @@ y3 = (3, 8)
 
 f1 = go.Frame(name ="f1", data=[go.Scatter(x=x, y=y, line=dict(color='purple'))])
 f2 = go.Frame(name ="f2", data=[go.Scatter(visible=True, name="Step 1", line=dict(color='red'), x=[y0[0],y1[0]], y=[y0[1], y1[1]])])
-f3 = go.Frame(name ="f3", data=[go.Scatter(visible=True,name="Step 2", line=dict(color='purple'), x=[y1[0],y2[0]], y=[y1[1], y2[1]])])
+f3 = go.Frame(name ="f3", data=[go.Scatter(visible=True,name="Step 2", line=dict(color='blue'), x=[y1[0],y2[0]], y=[y1[1], y2[1]])])
 f4 = go.Frame(name ="f4", data=[go.Scatter(name="Step 3", line=dict(color='green'), x=[y2[0],y3[0]], y=[y2[1], y3[1]])])
 
 frames = [f1, f2, f3, f4]

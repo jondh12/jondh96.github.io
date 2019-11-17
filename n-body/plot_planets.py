@@ -2,7 +2,7 @@ import numpy as np
 import plotly.graph_objects as go
 
 
-data = np.fromfile('data.dat', dtype=np.float64)
+data = np.fromfile('../../data.dat', dtype=np.float64)
 
 lim = 1e12
 
@@ -39,12 +39,12 @@ fig = go.Figure(
                                                                "transition": {"duration": 0}}])])]),
     frames=[go.Frame(
         data=[go.Scatter(
-            x=data[100*20*k:100*20*k+20][0::2],
-            y=data[100*20*k:100*20*k+20][1::2],
+            x=data[50*20*k:50*20*k+20][0::2],
+            y=data[50*20*k:50*20*k+20][1::2],
             mode="markers",
             marker=dict(color=["orange", "grey", "orange", "green", "red", "orange", "red", "purple", "blue", "purple"], size=[20, 10, 10, 10, 10, 16, 14, 16, 16, 10]))])
 
-            for k in range(int(1e3))]
+            for k in range(int(3e3))]
 )
 
 fig.write_html("planets.html", include_mathjax='cdn')
